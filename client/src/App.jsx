@@ -5,7 +5,7 @@ const App = () => {
 
   return (
     <>
-      <p className="text-3xl font-semibold underline:text">Hello world!</p>
+      <p className="text-3xl font-bold underline">Hello world!</p>
     </>
   );
 };
