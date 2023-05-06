@@ -1,11 +1,20 @@
 import { useState } from "react";
+import { Footer, Navbar, Services, Transactions, Welcome } from "./components";
 
 const App = () => {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <p className="text-3xl font-bold underline">Hello world!</p>
+      <div className="min-h-screen">
+        <div className="gradient-bg-welcome">
+          <Navbar />
+          <Welcome />
+        </div>
+        <Services />
+        <Transactions />
+        <Footer />
+      </div>
     </>
   );
 };
