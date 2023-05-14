@@ -3,12 +3,19 @@ import logo from "../../../images/logo.png";
 import Login from "./Login";
 import NavbarItem from "./NavbarItems";
 
+const Menu = [
+  { key: "home", value: "Home" },
+  { key: "market", value: "Market" },
+  { key: "exchange", value: "Exchange" },
+  { key: "tutorial", value: "Tutorial" },
+  { key: "wallets", value: "Wallets" },
+];
+
 const Navbar = () => {
   const [isHidden, setIsHidden] = useState(false);
-  console.log(isHidden);
-
+  const [activeMenu, setActiveMenu] = useState("Home");
   return (
-    <nav className="bg-white border-gray-200 dark:bg-gray-900">
+    <nav className="bg-white fixed w-full z-20 top-0 left-0 border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="" className="flex items-center">
           <img src={logo} className="h-8 mr-3" alt="Flowbite Logo" />
@@ -40,11 +47,22 @@ const Navbar = () => {
           id="navbar-default"
         >
           <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-            <NavbarItem title="Home" active={true} href="#" />
-            <NavbarItem title="Market" active={false} href="#" />
+            {Menu.map(({ key, value }) => {
+              return (
+                <div key={key}>
+                  <NavbarItem
+                    title={value}
+                    active={activeMenu === value ? true : false}
+                    setActiveMenu={setActiveMenu}
+                    href="#"
+                  />
+                </div>
+              );
+            })}
+            {/* <NavbarItem title="Market" active={false} href="#" />
             <NavbarItem title="Exchange" active={false} href="#" />
             <NavbarItem title="Tutorial" active={false} href="#" />
-            <NavbarItem title="Wallets" active={false} href="#" />
+            <NavbarItem title="Wallets" active={false} href="#" /> */}
             <Login />
           </ul>
         </div>
